@@ -40,6 +40,7 @@ public class ProjectSecurityConfig {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsManager() {
+        // 인메모리에 유저 정보를 생성함.
         UserDetails admin = User.withDefaultPasswordEncoder()
                 .username("admin")
                 .password("1234")
