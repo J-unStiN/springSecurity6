@@ -2,6 +2,7 @@ package org.nerdy.sj_security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -59,6 +60,8 @@ public class ProjectSecurityConfig {
                 .password("1234")
                 .authorities("admin")
                 .build();
+
+
 
         UserDetails user = User.withDefaultPasswordEncoder()
                 .username("user")
