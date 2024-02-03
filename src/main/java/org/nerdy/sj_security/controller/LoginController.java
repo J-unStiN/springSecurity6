@@ -1,4 +1,30 @@
 package org.nerdy.sj_security.controller;
 
+import org.nerdy.sj_security.model.Customer;
+import org.nerdy.sj_security.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 public class LoginController {
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
+
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody Customer customer) throws RuntimeException {
+
+        Customer save = customerRepository.save(customer);
+
+
+
+        return ResponseEntity.status(HttpStatus.CREATED).body("Customer CREATE");
+    }
+
+
 }

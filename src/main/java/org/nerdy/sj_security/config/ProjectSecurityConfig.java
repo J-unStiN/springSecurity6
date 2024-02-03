@@ -21,9 +21,10 @@ public class ProjectSecurityConfig {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 
-        http.authorizeHttpRequests()
+        http.csrf().disable()
+                .authorizeHttpRequests()
                         .requestMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards").authenticated() // 해당 경로는 보호
-                        .requestMatchers("/notices", "/contact").permitAll()
+                        .requestMatchers("/notices", "/contact", "/register").permitAll()
                         .and().formLogin()
                         .and().httpBasic();
         return http.build();
