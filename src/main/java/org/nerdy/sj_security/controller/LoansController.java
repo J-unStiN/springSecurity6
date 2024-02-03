@@ -8,6 +8,6 @@ public class LoansController {
 
     @GetMapping("/myLoans")
     public String getAccountDetail() {
-        return "HI";
+        return "HI myLoans";
     }
 }

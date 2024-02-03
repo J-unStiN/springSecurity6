@@ -9,7 +9,7 @@ public class NoticesController {
 
     @GetMapping("/notices")
     public String getAccountDetail() {
-        return "HI";
+        return "HI notices";
     }
 
 }

@@ -9,6 +9,6 @@ public class AccountController {
 
     @GetMapping("/myAccount")
     public String getAccountDetail() {
-        return "HI";
+        return "HI Account";
     }
 }

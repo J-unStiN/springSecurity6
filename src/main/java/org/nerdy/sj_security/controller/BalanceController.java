@@ -8,6 +8,6 @@ public class BalanceController {
 
     @GetMapping("/myBalance")
     public String getAccountDetail() {
-        return "HI";
+        return "HI myBalance";
     }
 }

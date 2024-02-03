@@ -6,10 +6,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class ProjectSecurityConfig {
@@ -42,7 +46,12 @@ public class ProjectSecurityConfig {
 
 
     @Bean
-    public InMemoryUserDetailsManager userDetailsManager() {
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
+
+//    @Bean
+//    public InMemoryUserDetailsManager userDetailsManager() {
         // 인메모리에 유저 정보를 생성함.
 //        UserDetails admin = User.withDefaultPasswordEncoder()
 //                .username("admin")
@@ -55,27 +64,28 @@ public class ProjectSecurityConfig {
 //                .authorities("read")
 //                .build();
 
+//
+//        UserDetails admin = User.withUsername("admin")
+//                .password("1234")
+//                .authorities("admin")
+//                .build();
+//
+//
+//
+//        UserDetails user = User.withDefaultPasswordEncoder()
+//                .username("user")
+//                .password("1234")
+//                .authorities("read")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(admin, user);
+//    }
 
-        UserDetails admin = User.withUsername("admin")
-                .password("1234")
-                .authorities("admin")
-                .build();
+//    @Bean
+//    public UserDetailsService userDetailsService(DataSource dataSource) {
+//        return new JdbcUserDetailsManager(dataSource);
+//    }
 
 
-
-        UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("1234")
-                .authorities("read")
-                .build();
-
-        return new InMemoryUserDetailsManager(admin, user);
-    }
-
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
 
 }
