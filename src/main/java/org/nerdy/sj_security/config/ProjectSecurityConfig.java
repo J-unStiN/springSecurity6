@@ -48,6 +48,7 @@ public class ProjectSecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+        // 이 NoOpPasswordEncoder 객체가 비밀번호를 일반텍스트로 저장
         return NoOpPasswordEncoder.getInstance();
     }
 
