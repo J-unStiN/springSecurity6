@@ -1,13 +1,29 @@
 package org.nerdy.sj_security.controller;
 
+import org.nerdy.sj_security.model.Cards;
+import org.nerdy.sj_security.repository.CardsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class CardsController {
 
+    @Autowired
+    private CardsRepository cardsRepository;
+
     @GetMapping("/myCards")
-    public String getAccountDetail() {
-        return "HI myCards";
+    public List<Cards> getAccountDetail(@RequestParam int id) {
+
+        List<Cards> cards = cardsRepository.findByCustomerId(id);
+
+        if(cards != null) {
+            return cards;
+        }else {
+            return null;
+        }
     }
 }
